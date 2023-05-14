@@ -10,7 +10,15 @@ body {
     min-height: 100vh;
 }
 
-/* ESTILOS DEL FORM */
+/* ESTILOS DEL formulario*/
+.form{
+    width: 100%;
+    display:flex;
+    justify-content: space-evenly;
+}
+/* CIERRE DE formulario*/
+
+/* ESTILOS DEL formulario del FORM */
 .estilosform{
     display: flex;
     flex-direction: column;
@@ -21,13 +29,52 @@ body {
 .estilosform select {
     margin-bottom: 5px;
 }
-/* CIERRE DE ESTILOS DEL FORM */
+/* CIERRE DE formulario del FORM  */
+
+/* ESTILOS DE LA TABLA del FORM */
+table{
+    width: 100;
+    table-layout: 100%;
+}
+/* CIERRE DE ESTILOS DE LA TABLA del FORM */
 
 /* HEADER */
 header {
     text-align: center;
 }
 /* HEADER */
+
+/* LIST NAV */
+li{
+    
+    display: inline-block;
+    position:relative;
+    cursor:pointer;
+    transition:0.4s all ease;
+}
+
+li:hover{
+    transition : 0.4s all ease;
+}
+
+li::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #0051ff;
+    transform-origin:bottom right;
+    transition: transform 0.5s ease-out;
+}
+
+li:hover::after{
+    transform: scaleX(1);
+    transform-origin: bottom left;;
+}
+/* LIST NAV */
 
 /* NAV */
 nav {

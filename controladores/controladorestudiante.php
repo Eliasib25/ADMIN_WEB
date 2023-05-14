@@ -45,8 +45,25 @@ implements InterfazControlador
     //     return $resultado;
     // }
 
-    public function listar(){}
-    public function consultarRegistro($objeto){}
+    public function listar(){
+        $sql = "select * from ".$this->tabla;
+        return $this->getDatos($sql);
+    }
+    public function consultarRegistro($objeto){
+        $sql = "select * from ".$this->tabla." where PlacaVehiculo = ?";
+        $sentencia = $this->getConexion()->prepare($sql);
+        $sentencia->bind_param("s", $objeto->placaVehiculo);
+        $sentencia->execute();
+        $resultado = $sentencia->get_result();
+        return $resultado;
+    }
+
+    public function getDatos($sql){
+        $sentencia = $this->getConexion()->prepare($sql);
+        $sentencia->execute();
+        $resultado = $sentencia->get_result();
+        return $resultado;
+    }
 }
 
 
