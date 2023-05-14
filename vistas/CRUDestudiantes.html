@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Estudiantes</title>
+</head>
+<body>
+    <form action="../controladores/controladorformulario.php" method="post">
+    <label for="">Ingrese el número de indentificacion</label>
+    <br>
+    <input type="number" name="numeroIdentificacion" id="">
+    <br>
+    <label for="">Ingres el tipo de indentificacion</label>
+    <br>
+    <select name="tipoIdentificacion" id="">
+        <option value="CC">Cedula</option>
+        <option value="CE">Cedula de extranjeria</option>
+        <option value="TI">Tarjeta de identidad</option>
+    </select>
+    <br>
+    <label for="">Ingrese los nombres</label>
+    <br>
+    <input type="text" name="nombres" id="">
+    <br>
+    <label for="">Ingrese los apellidos</label>
+    <br>
+    <input type="text" name="apellidos" id="">
+    <br>
+    <label for="">Ingrese la placa del vehículo</label>
+    <br>
+    <input type="text" name="placaVehiculo" id="">
+    <br>
+    <input type="submit" name="operacion" value="Guardar">Guardar</input>
+    <br>
+    <input type="text" name="controlador" value ="estudiante" id="" hidden>
+</form>
+</body>
+</html>
