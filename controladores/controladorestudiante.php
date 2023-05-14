@@ -2,7 +2,7 @@
 
 require_once("../componentes/conectarmysql.php");
 require_once("interfazcontrolador.php");
-
+ 
 class ControladorEstudiante extends ConectarMySQL 
 implements InterfazControlador
 {
