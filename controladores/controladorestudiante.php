@@ -32,9 +32,9 @@ implements InterfazControlador
     }
 
     public function eliminar($objeto){
-        $sql = "delete from ".$this->tabla." where NumeroIdentificacion = ? and TipoIdemtificacion = ?";
+        $sql = "delete from ".$this->tabla." where NumeroIdentificacion = ? and TipoIdentificacion = ?";
         $sentencia = $this->getConexion()->prepare($sql);
-        $sentencia->bindparam("is",$objeto->numeroIdentificacion,$objeto->tipoIdentificacion);
+        $sentencia->bind_param("is", $objeto->numeroIdentificacion, $objeto->tipoIdentificacion);
         $sentencia->execute();
     }
 

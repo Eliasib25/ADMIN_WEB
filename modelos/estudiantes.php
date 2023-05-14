@@ -8,8 +8,8 @@ class Estudiante {
     public $apellidos;
     public $placaVehiculo;
 
-    public function __construct($numeroIdentificacion,$tipoIdentificacion,
-    $nombres,$apellidos,$placaVehiculo){
+    public function __construct($numeroIdentificacion ='',$tipoIdentificacion='',
+    $nombres = '',$apellidos = '',$placaVehiculo = ''){
 
     $this->numeroIdentificacion = $numeroIdentificacion;
     $this->tipoIdentificacion = $tipoIdentificacion;
