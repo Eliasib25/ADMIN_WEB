@@ -2,69 +2,33 @@
 
 require_once("../componentes/conectarmysql.php");
 require_once("interfazcontrolador.php");
- 
-class ControladorEstudiante extends ConectarMySQL 
-implements InterfazControlador
-{
-    private $tabla = "estudiante";
+
+class ControladorEstudiante extends ConectarMySQL implements InterfazControlador {
+    private $tabla = "usuarios";
 
     public function guardar($objeto){
-        $sql = "select 1 from ". $this->tabla." where NumeroIdentificacion = ? and TipoIdentificacion = ? ";
+        $sql = "call CrearUsuario(0,?,?,?,?,?,?,?,?,?,?,?)";
         $sentencia = $this->getConexion()->prepare($sql);
-        $sentencia->bind_param("is",$objeto->numeroIdentificacion,$objeto->tipoIdentificacion);
+        $sentencia->bind_param("sssssssssbs",$objeto->Identificador,$objeto->NombreUsuario,$objeto->Contraseña,$objeto->NumeroIdentificacion,$objeto->TipoIdentificacion,$objeto->Nombres,$objeto->Apellidos,$objeto->FechaNacimiento,$objeto->TipoSangre,$objeto->Foto,$objeto->Programa);
         $sentencia->execute();
-        $result = $sentencia -> get_result();
-
-        if($result->num_rows == 0){
-            $sql = "insert into ".$this->tabla." values (?,?,?,?,?)";
-            $sentencia = $this->getConexion()->prepare($sql);
-            $sentencia->bind_param("issss",$objeto->numeroIdentificacion,$objeto->tipoIdentificacion,$objeto->nombres,$objeto->apellidos,$objeto->placaVehiculo);
-            $sentencia->execute();
-            $resultado = $sentencia->get_result();
-        }else{
-            $sql = "update ".$this->tabla." set Nombres=?, Apellidos=?, PlacaVehiculo=?  where NumeroIdentificacion=? and TipoIdentificacion=?";
-            $sentencia = $this->getConexion()->prepare($sql);
-            $sentencia->bind_param("sssis",$objeto->nombres,$objeto->apellidos,$objeto->placaVehiculo,$objeto->numeroIdentificacion,$objeto->tipoIdentificacion);
-            $sentencia->execute();
-            $resultado = $sentencia->get_result();
-        }
-        return $resultado;
+        $resultado = $sentencia->get_result();
     }
 
     public function eliminar($objeto){
-        $sql = "delete from ".$this->tabla." where NumeroIdentificacion = ? and TipoIdentificacion = ?";
+        $sql = "call CrearUsuario(1,?,?,?,?,?,?,?,?,?,?,?)";
         $sentencia = $this->getConexion()->prepare($sql);
-        $sentencia->bind_param("is", $objeto->numeroIdentificacion, $objeto->tipoIdentificacion);
+        $sentencia->bind_param("sssssssssbs",$objeto->Identificador,$objeto->NombreUsuario,$objeto->Contraseña,$objeto->NumeroIdentificacion,$objeto->TipoIdentificacion,$objeto->Nombres,$objeto->Apellidos,$objeto->FechaNacimiento,$objeto->TipoSangre,$objeto->Foto,$objeto->Programa);
         $sentencia->execute();
+        $resultado = $sentencia->get_result();
     }
-
-    // public function getDatos($sql){
-    //     $sentencia = $this->getconexion()->prepare($sql);
-    //     $sentencia->execute();
-    //     $resultado = $sentencia->get_result();
-    //     return $resultado;
-    // }
 
     public function listar(){
-        $sql = "select * from ".$this->tabla;
-        return $this->getDatos($sql);
-    }
-    public function consultarRegistro($objeto){
-        $sql = "select * from ".$this->tabla." where PlacaVehiculo = ?";
-        $sentencia = $this->getConexion()->prepare($sql);
-        $sentencia->bind_param("s", $objeto->placaVehiculo);
-        $sentencia->execute();
-        $resultado = $sentencia->get_result();
-        return $resultado;
     }
 
+    public function consultarRegistro($objeto){
+    }
+        
     public function getDatos($sql){
-        $sentencia = $this->getConexion()->prepare($sql);
-        $sentencia->execute();
-        $resultado = $sentencia->get_result();
-        return $resultado;
     }
 }
-
-
 ?>

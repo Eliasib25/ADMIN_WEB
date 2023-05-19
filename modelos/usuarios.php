@@ -1,22 +1,35 @@
 <?php
 
-class Usuario {
+class Estudiante {
 
-    public $identificacion;
-    public $contraseña;
-    public $estudianteNumeroIdentificacion;
-    public $estudianteTipoIdentificacion;
-    public $tipo;
+    public $Identificador;
+    public $NombreUsuario;
+    public $Contraseña;
+    public $NumeroIdentificacion;
+    public $TipoIdentificacion;
+    public $Nombres;
+    public $Apellidos;
+    public $FechaNacimiento;
+    public $TipoSangre;
+    public $Foto;
+    public $Programa;
 
-        public function __construct($identificacion,$contraseña="",$estudianteNumeroIdentificacion="",$estudianteTipoIdentificacion="",
-        $tipo="")
-        {
-            $this->identificacion = $identificacion;
-            $this->contraseña = $contraseña;
-            $this->estudianteNumeroIdentificacion = $estudianteNumeroIdentificacion;
-            $this->estudianteTipoIdentificacion = $estudianteTipoIdentificacion;
-            $this->tipo = $tipo;
-        }
+    public function __construct($Identificador = '',$NombreUsuario = '',$Contraseña = '',$NumeroIdentificacion ='',$TipoIdentificacion='',
+    $Nombres = '',$Apellidos = '',$FechaNacimiento = '',$TipoSangre = '',$Foto = '', $Programa= ''){
+
+    $this->Identificador = $Identificador;
+    $this->NombreUsuario = $NombreUsuario;    
+    $this->Contraseña = $Contraseña;
+    $this->NumeroIdentificacion = $NumeroIdentificacion;
+    $this->TipoIdentificacion = $TipoIdentificacion;
+    $this->Nombres = $Nombres;
+    $this->Apellidos = $Apellidos;
+    $this->FechaNacimiento = $FechaNacimiento;
+    $this->TipoSangre = $TipoSangre;
+    $this->Foto =$Foto;
+    $this->Programa = $Programa;
+
+    }
 
 }
 

@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    /* border: solid; */
 }
 
 body {
@@ -10,54 +9,33 @@ body {
     min-height: 100vh;
 }
 
-/* ESTILOS DEL formulario*/
-.form{
+.form {
     width: 100%;
-    display:flex;
+    display: flex;
     justify-content: space-evenly;
 }
-/* CIERRE DE formulario*/
 
-/* ESTILOS DEL formulario del FORM */
-.estilosform{
+.estilosform {
     display: flex;
     flex-direction: column;
 }
 
 .estilosform label,
-.estilosform input,
-.estilosform select {
+.estilosform input {
     margin-bottom: 5px;
 }
-/* CIERRE DE formulario del FORM  */
 
-/* ESTILOS DE LA TABLA del FORM */
-table{
-    width: 100;
-    table-layout: 100%;
-}
-/* CIERRE DE ESTILOS DE LA TABLA del FORM */
-
-/* HEADER */
 header {
     text-align: center;
 }
-/* HEADER */
 
-/* LIST NAV */
-li{
-    
+li {
     display: inline-block;
-    position:relative;
-    cursor:pointer;
-    transition:0.4s all ease;
+    position: relative;
+    cursor: pointer;
 }
 
-li:hover{
-    transition : 0.4s all ease;
-}
-
-li::after{
+li::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -66,20 +44,17 @@ li::after{
     bottom: -5px;
     left: 0;
     background-color: #0051ff;
-    transform-origin:bottom right;
+    transform-origin: bottom right;
     transition: transform 0.5s ease-out;
 }
 
-li:hover::after{
+li:hover::after {
     transform: scaleX(1);
-    transform-origin: bottom left;;
+    transform-origin: bottom left;
 }
-/* LIST NAV */
 
-/* NAV */
 nav {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
 }
 
@@ -89,14 +64,8 @@ nav a {
     text-decoration: none;
 }
 
-nav div a {
-    padding: 14px 20px;
-}
-/* NAV */
-
-.div-article{
+.div-article {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
 }
-

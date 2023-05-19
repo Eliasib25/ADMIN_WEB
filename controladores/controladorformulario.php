@@ -5,20 +5,25 @@ $operacion = $_POST['operacion'];
 
 if($controlador == "estudiante"){
 
-    require_once("../modelos/estudiantes.php");
-    require_once("../controladores/controladorestudiante.php");
+    require_once("../modelos/usuarios.php");
+    require_once("controladorestudiante.php");
+    
+    $Identificador = 0;
+    $NombreUsuario = $_POST['NombreUsuario'];//aa
+    $Contraseña = $_POST['Contraseña'];//aa
+    $NumeroIdentificacion = $_POST['NumeroIdentificacion'];
+    $TipoIdentificacion = $_POST['TipoIdentificacion'];
+    $Nombres = $_POST['Nombres'];
+    $Apellidos = $_POST['Apellidos'];
+    $FechaNacimiento = $_POST['FechaNacimiento'];//aa
+    $TipoSangre = $_POST['TipoSangre'];//aa
+    $Foto = $_POST['Foto'];//aa
+    $Programa = $_POST['Programa'];
 
-    $numeroIdentificacion = $_POST['numeroIdentificacion'];
-    $tipoIdentificacion = $_POST['tipoIdentificacion'];
-    $nombres = $_POST['nombres'];
-    $apellidos = $_POST['apellidos'];
-    $placaVehiculo = $_POST['placaVehiculo'];
-
-    $estudiante = new Estudiante($numeroIdentificacion,$tipoIdentificacion,$nombres,$apellidos,$placaVehiculo);
+    $estudiante = new Estudiante($Identificador, $NombreUsuario, $Contraseña, $NumeroIdentificacion,$TipoIdentificacion,$Nombres,$Apellidos, $FechaNacimiento, $TipoSangre, $Foto, $Programa);
 
     $controladorEstudiante = new ControladorEstudiante();
 
-   
     if($operacion =="Guardar"){
 
         $resultado = $controladorEstudiante->guardar($estudiante);   
@@ -30,10 +35,10 @@ if($controlador == "estudiante"){
         }
 
     }elseif($operacion == "Eliminar"){
-        $numeroIdentificacion = $_POST['numeroIdentificacion'];
-        $tipoIdentificacion = $_POST['tipoIdentificacion'];
+        $NumeroIdentificacion = $_POST['NumeroIdentificacion'];
+        $TipoIdentificacion = $_POST['TipoIdentificacion'];
 
-        $estudiante = new Estudiante($numeroIdentificacion,$tipoIdentificacion);
+        $estudiante = new Estudiante($Identificador, $NombreUsuario, $Contraseña, $NumeroIdentificacion,$TipoIdentificacion,$Nombres,$Apellidos, $FechaNacimiento, $TipoSangre, $Foto, $Programa);
 
         $controladorEstudiante = new ControladorEstudiante();
 
@@ -46,33 +51,45 @@ if($controlador == "estudiante"){
         }
     }
     
-}elseif($controlador == "usuario"){
-    require_once("../modelos/usuarios.php");
-    require_once("../controladores/controladorusuario.php");
+}elseif($controlador == "vehiculo"){
+    require_once("../modelos/vehiculo.php");
+    require_once("controladorvehiculo.php");
 
-    $usuario = $_POST['usuario'];
-    $contraseña = $_POST['contraseña'];
+    $idVehiculos = 0;
+    $Nombre = $_POST['Nombre'];
+    $Modelo = $_POST['Modelo'];
+    $PlacaVehiculo = $_POST['PlacaVehiculo'];
+    $Color = $_POST['Color'];
 
-    $usuarios = new Usuario($usuario,$contraseña);
+    $vehiculo = new Vehiculo($idVehiculos, $Nombre, $Modelo, $PlacaVehiculo,$Color);
 
-    $controladorUsuarios = new ControladorUsuarios();
+    $controladorVehiculo = new ControladorVehiculo();
 
-    if($operacion = "iniciarSesion"){
-        $resultado = $controladorUsuarios->consultarRegistro($usuarios);
-        $tipo = $resultado;
+    if($operacion =="Guardar"){
 
-        switch($tipo){
-            case "Administrador":
-                header("Location: ../vistas/administrador.html");
-                break;
-            case "Estudiante":
-                echo("Usted es un estudiante, por favor ingrese a la aplicacion");
-                break;
-            default: 
-                echo("Usuario o contraseña incorrectos");
+        $resultado = $controladorVehiculo->guardar($vehiculo);   
+
+        if($resultado == false){
+            echo "El vehículo fue guardado";
+        }else{
+            echo "El vehículo no fue guardado";
+        }
+
+    }elseif($operacion == "Eliminar"){
+        $PlacaVehiculo = $_POST['PlacaVehiculo'];
+
+        $vehiculo = new Vehiculo($idVehiculos, $Nombre, $Modelo, $PlacaVehiculo,$Color);
+
+        $controladorVehiculo = new ControladorVehiculo();
+
+        $resultado = $controladorVehiculo->eliminar($vehiculo);
+
+        if($resultado == false){
+            echo "El vehículo fue eliminado";
+        }else{
+            echo "El vehículo no fue eliminado";
         }
     }
-
 
 }
 
