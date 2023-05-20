@@ -91,6 +91,26 @@ if($controlador == "estudiante"){
         }
     }
 
+}elseif($controlador == "controlsalida"){
+    require_once("../modelos/controlsalidavehiculo.php");
+    require_once("controladorcontrolsalidavehiculo.php");
+
+    $Id = 0;    
+    $EstadoPuesto = $_POST['EstadoPuesto'];
+    $Numero = $_POST['Numero'];
+    $parqueadero_id = $_POST['parqueaderos_id'];
+
+    $control = new ControlSalidaVehiculo($Id, $EstadoPuesto, $Numero, $parqueadero_id);
+
+    $controladorVehiculo = new ControladorControlSalidaVehiculo();
+
+    $resultado = $controladorVehiculo->guardar($control);   
+
+    echo "El estado del puesto se ha cambiado";
+        
+
+    
+
 }
 
 ?>

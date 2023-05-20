@@ -7,3 +7,4 @@ HACER:
 5	Historial de parqueo	                                        Ambos
 6	Visualización de los parqueaderos y puestos	User
 7	Control de salida de vehiculos	                                Admin
+

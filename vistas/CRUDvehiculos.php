@@ -14,8 +14,17 @@
 
     <nav>
         <ul class="list">
-            <li><a href="CRUDestudiantes.php">Gestión usuario</a></li>
+            <li>
+                <a href="CRUDestudiantes.php">Gestión usuario</a>
+            </li>
+            <li>
+                <a href="CRUDcontrolsalidavehiculos.php">Control salida vehÍculos</a> 
+            </li>
+            <li>
+                    <a href="Asociarvehiculousuario.php">Asociar vehiculo-usuario</a> 
+                </li>
         </ul>
+        
     </nav>
 
     <div class="div-article">

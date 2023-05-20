@@ -16,7 +16,13 @@
         <div>
             <ul class="list">
                 <li>
-                    <a href="CRUDvehiculos.php">Gestionar vehiculos</a> 
+                    <a href="CRUDvehiculos.php">Gestionar vehÍculos</a> 
+                </li>
+                <li>
+                    <a href="CRUDcontrolsalidavehiculos.php">Control salida vehÍculos</a> 
+                </li>
+                <li>
+                    <a href="Asociarvehiculousuario.php">Asociar vehiculo-usuario</a> 
                 </li>
             </ul>
         </div>
@@ -26,32 +32,32 @@
 
         <form action="../controladores/controladorformulario.php" method="post" class="form">
             <div class="estilosform">
-                <label for="">Ingrese el nombre de usuario</label>
+                <label>Ingrese el nombre de usuario</label>
                 <input type="text" name="NombreUsuario" id="">
 
-                <label for="">Ingrese la contraseña del usuario</label>
+                <label>Ingrese la contraseña del usuario</label>
                 <input type="text" name="Contraseña" id="">
 
-                <label for="">Ingrese el número de indentificacion</label>
+                <label>Ingrese el número de indentificacion</label>
                 <input type="number" name="NumeroIdentificacion" id="">
                 
-                <label for="">Ingres el tipo de indentificacion</label>
+                <label>Ingres el tipo de indentificacion</label>
                 <select name="TipoIdentificacion" id="">
                     <option value="CC">Cedula</option>
                     <option value="CE">Cedula de extranjeria</option>
                     <option value="TI">Tarjeta de identidad</option>
                 </select>
                 
-                <label for="">Ingrese los nombres</label>
+                <label>Ingrese los nombres</label>
                 <input type="text" name="Nombres" id="">
                 
-                <label for="">Ingrese los apellidos</label>
+                <label>Ingrese los apellidos</label>
                 <input type="text" name="Apellidos" id="">
 
-                <label for="">Ingrese la fecha de nacimiento</label>
+                <label>Ingrese la fecha de nacimiento</label>
                 <input type="date" name="FechaNacimiento" id="">
 
-                <label for="">Ingrese el tipo de sangre</label>
+                <label>Ingrese el tipo de sangre</label>
                 <select name="TipoSangre" id="">
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>
@@ -63,13 +69,13 @@
                     <option value="B-">B-</option>
                 </select>
 
-                <label for="">Ingrese la foto</label>
+                <label>Ingrese la foto</label>
                 <input type="text" name="Foto" id="">
 
-                <label for="">Ingrese el programa</label>
+                <label>Ingrese el programa</label>
                 <input type="text" name="Programa" id="">
                 
-                <label for="">Ingrese la placa del vehículo</label>
+                <label>Ingrese la placa del vehículo</label>
                 <input type="text" name="PlacaVehiculo" id="">
                 
                 <input type="submit" name="operacion" value="Guardar"></input>
