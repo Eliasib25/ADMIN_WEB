@@ -172,6 +172,27 @@ if($controlador == "estudiante"){
     echo "<script>
             window.location.href = '../vistas/CRUDroles.php';
             </script>";
+}elseif($controlador == "reservas"){
+    require_once("../modelos/reservas.php");
+    require_once("controladorreservas.php");
+
+    $Id = 0;
+    $HoraInicio = $_POST['HoraInicio'];
+    $HoraFin = $_POST['HoraFin'];
+    $Fecha = $_POST['Fecha'];
+    $EstadoReserva = $_POST['EstadoReserva'];
+    $Placa_Vehiculo = $_POST['Placa_Vehiculo'];
+    $NumeroIdentificacion = $_POST['NumeroIdentificacion'];
+    $NumeroPuesto = $_POST['NumeroPuesto'];
+    $reserva = new Reserva($Id, $HoraInicio, $Fecha, $EstadoReserva, $Placa_Vehiculo, $HoraFin, $NumeroIdentificacion, $NumeroPuesto);
+
+    $controladorReserva = new ControladorReservas();
+
+    $resultado = $controladorReserva->guardar($reserva);   
+
+    echo "<script>
+            window.location.href = '../vistas/CRUDreservas.php';
+            </script>";
 }
 
 ?>

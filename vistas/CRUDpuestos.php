@@ -26,7 +26,10 @@
                 </li>
                 <li>
                 <a href="CRUDroles.php">Gestión roles</a> 
-            </li>
+                </li>
+                <li>
+                <a href="CRUDreservas.php">Gestión reservas</a> 
+                </li>
             </ul>
         </div>
     </nav>

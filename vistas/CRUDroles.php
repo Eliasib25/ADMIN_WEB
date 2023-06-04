@@ -27,6 +27,9 @@
                 <li>
                     <a href="CRUDpuestos.php">Control puestos</a> 
                 </li>
+                <li>
+                <a href="CRUDreservas.php">Gestión reservas</a> 
+                </li>
             </ul>
         </div>
     </nav>
