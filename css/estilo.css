@@ -1,41 +1,46 @@
 * {
     box-sizing: border-box;
-}
-
-body {
+  }
+  
+  body {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
-
-.form {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.estilosform {
-    display: flex;
-    flex-direction: column;
-}
-
-.estilosform label,
-.estilosform input{
-    margin-bottom: 5px;
-}
-
-header {
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
     text-align: center;
-}
-
-li {
+    padding: 20px;
+    background-color: #f0f0f0;
+  }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  nav {
+    background-color: #f0f0f0;
+  }
+  
+  .list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .list li {
     display: inline-block;
     position: relative;
     cursor: pointer;
-}
-
-li::after {
+    padding: 10px 15px;
+  }
+  
+  .list li::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -46,26 +51,71 @@ li::after {
     background-color: black;
     transform-origin: bottom right;
     transition: transform 0.5s ease-out;
-}
-
-li:hover::after {
+  }
+  
+  .list li:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-}
-
-nav a {
-    color: black;
-    padding: 14px 20px;
-    text-decoration: none;
-}
-
-.div-article {
+  }
+  
+  .div-article {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+    margin-top: 20px;
+  }
+  
+  .form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .estilosform {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+  }
+  
+  .estilosform label,
+  .estilosform input,
+  .estilosform select {
+    margin-bottom: 10px;
+  }
+  
+  .estilosform input,
+  .estilosform select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .buttons input {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .buttons input:hover {
+    background-color: #45a049;
+  }
+  nav a {
+    color: black;
+    padding: 14px 20px;
+    text-decoration: none;
+  }

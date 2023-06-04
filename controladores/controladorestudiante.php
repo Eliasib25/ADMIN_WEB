@@ -7,9 +7,9 @@ class ControladorEstudiante extends ConectarMySQL implements InterfazControlador
     private $tabla = "usuarios";
 
     public function guardar($objeto){
-        $sql = "call CrearUsuario(0,?,?,?,?,?,?,?,?,?,?,?)";
+        $sql = "call CrearUsuario(0,?,?,?,?,?,?,?,?,?,?,?,?)";
         $sentencia = $this->getConexion()->prepare($sql);
-        $sentencia->bind_param("sssssssssbs",$objeto->Identificador,$objeto->NombreUsuario,$objeto->Contraseña,$objeto->NumeroIdentificacion,$objeto->TipoIdentificacion,$objeto->Nombres,$objeto->Apellidos,$objeto->FechaNacimiento,$objeto->TipoSangre,$objeto->Foto,$objeto->Programa);
+        $sentencia->bind_param("sssssssssbss",$objeto->Identificador,$objeto->NombreUsuario,$objeto->Contraseña,$objeto->NumeroIdentificacion,$objeto->TipoIdentificacion,$objeto->Nombres,$objeto->Apellidos,$objeto->FechaNacimiento,$objeto->TipoSangre,$objeto->Foto,$objeto->Programa,$objeto->NombreRol);
         $sentencia->execute();
         $resultado = $sentencia->get_result();
     }
@@ -17,7 +17,7 @@ class ControladorEstudiante extends ConectarMySQL implements InterfazControlador
     public function eliminar($objeto){
         $sql = "call CrearUsuario(1,?,?,?,?,?,?,?,?,?,?,?)";
         $sentencia = $this->getConexion()->prepare($sql);
-        $sentencia->bind_param("sssssssssbs",$objeto->Identificador,$objeto->NombreUsuario,$objeto->Contraseña,$objeto->NumeroIdentificacion,$objeto->TipoIdentificacion,$objeto->Nombres,$objeto->Apellidos,$objeto->FechaNacimiento,$objeto->TipoSangre,$objeto->Foto,$objeto->Programa);
+        $sentencia->bind_param("sssssssssbss",$objeto->Identificador,$objeto->NombreUsuario,$objeto->Contraseña,$objeto->NumeroIdentificacion,$objeto->TipoIdentificacion,$objeto->Nombres,$objeto->Apellidos,$objeto->FechaNacimiento,$objeto->TipoSangre,$objeto->Foto,$objeto->Programa,$objeto->NombreRol);
         $sentencia->execute();
         $resultado = $sentencia->get_result();
     }

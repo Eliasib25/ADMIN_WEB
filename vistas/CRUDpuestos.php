@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vehiculo-Usuario</title>
+    <title>Control Puesto</title>
     <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body>
     <header>
-        <h1>ADMINISTRADOR - ASOCIAR VEHÍCULO A USUARIO</h1>
+        <h1>ADMINISTRADOR - CONTROL DE PUESTOS</h1>
     </header>
 
     <nav>
@@ -19,11 +19,14 @@
                     <a href="CRUDvehiculos.php">Gestionar vehÍculos</a> 
                 </li>
                 <li>
-                    <a href="CRUDestudiantes.php">Gestionar estudiante</a> 
+                    <a href="CRUDusuarios.php">Gestion usuarios</a> 
                 </li>
                 <li>
-                    <a href="CRUDcontrolsalidavehiculos.php">Control salida vehÍculos</a> 
+                    <a href="CRUDparqueadero.php">Gestión parqueadero</a> 
                 </li>
+                <li>
+                <a href="CRUDroles.php">Gestión roles</a> 
+            </li>
             </ul>
         </div>
     </nav>
@@ -32,22 +35,22 @@
 
         <form action="../controladores/controladorformulario.php" method="post" class="form">
             <div class="estilosform">
-                <label>Ingrese numero identificacion del usuario</label>
-                <input type="number" name="NumeroIdentificacion" id="">
+                <label>Ingrese numero del puesto</label>
+                <input type="number" name="Numero" id="" require>
 
-                <label>Ingres el tipo de indentificacion del usuario</label>
-                <select name="TipoIdentificacion" id="">
-                    <option value="CC">Cedula</option>
-                    <option value="CE">Cedula de extranjeria</option>
-                    <option value="TI">Tarjeta de identidad</option>
+                <label>Ingrese el estado que desea asignar al puesto</label>
+                <select name="EstadoPuesto" id="" require>
+                    <option value="Disponible">Disponible</option>
+                    <option value="NoDisponible">NoDisponible</option>
+                    
                 </select>
 
-                <label>Ingrese la placa del vehículo de ese usuario</label>
-                <input type="number" name="PlacaVehiculo" id="">
+                <label>Ingrese el id del parqueadero al que pertenece</label>
+                <input type="number" name="parqueaderos_id" id="">
                 
                 <input type="submit" name="operacion" value="Guardar" style="margin-top:5px;"></input>
                 
-                <input type="text" name="controlador" value ="AsociarVehiculoUsuario" id="" hidden>
+                <input type="text" name="controlador" value ="puestos" id="" hidden>
             </div>
         </form>
     </div>

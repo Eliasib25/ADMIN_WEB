@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <h1>ADMINISTRADOR - AGREGAR USUARIO</h1>
+        <h1>ADMINISTRADOR - GESTIONAR USUARIO</h1>
     </header>
 
     <nav>
@@ -19,46 +19,49 @@
                     <a href="CRUDvehiculos.php">Gestionar vehÍculos</a> 
                 </li>
                 <li>
-                    <a href="CRUDcontrolsalidavehiculos.php">Control salida vehÍculos</a> 
+                    <a href="CRUDparqueadero.php">Gestionar parqueadero</a> 
                 </li>
                 <li>
-                    <a href="Asociarvehiculousuario.php">Asociar vehiculo-usuario</a> 
+                    <a href="CRUDpuestos.php">Control puestos</a> 
                 </li>
+                <li>
+                <a href="CRUDroles.php">Gestión roles</a> 
+            </li>
             </ul>
         </div>
     </nav>
 
     <div class="div-article">
 
-        <form action="../controladores/controladorformulario.php" method="post" class="form">
+        <form action="../controladores/controladorformulario.php" method="post" class="form" >
             <div class="estilosform">
                 <label>Ingrese el nombre de usuario</label>
-                <input type="text" name="NombreUsuario" id="">
+                <input type="text" name="NombreUsuario" id="" require>
 
                 <label>Ingrese la contraseña del usuario</label>
-                <input type="text" name="Contraseña" id="">
+                <input type="text" name="Contraseña" id="" require>
 
                 <label>Ingrese el número de indentificacion</label>
-                <input type="number" name="NumeroIdentificacion" id="">
+                <input type="number" name="NumeroIdentificacion" id="" require>
                 
                 <label>Ingres el tipo de indentificacion</label>
-                <select name="TipoIdentificacion" id="">
+                <select name="TipoIdentificacion" id="" require>
                     <option value="CC">Cedula</option>
                     <option value="CE">Cedula de extranjeria</option>
                     <option value="TI">Tarjeta de identidad</option>
                 </select>
                 
                 <label>Ingrese los nombres</label>
-                <input type="text" name="Nombres" id="">
+                <input type="text" name="Nombres" id="" require>
                 
                 <label>Ingrese los apellidos</label>
-                <input type="text" name="Apellidos" id="">
+                <input type="text" name="Apellidos" id="" require>
 
                 <label>Ingrese la fecha de nacimiento</label>
-                <input type="date" name="FechaNacimiento" id="">
+                <input type="date" name="FechaNacimiento" id="" require>
 
                 <label>Ingrese el tipo de sangre</label>
-                <select name="TipoSangre" id="">
+                <select name="TipoSangre" id="" require>
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>
                     <option value="o+">o+</option>
@@ -70,15 +73,18 @@
                 </select>
 
                 <label>Ingrese la foto</label>
-                <input type="text" name="Foto" id="">
+                <input type="text" name="Foto" id="" require>
 
                 <label>Ingrese el programa</label>
-                <input type="text" name="Programa" id="">
+                <input type="text" name="Programa" id="" require>
                 
                 <label>Ingrese la placa del vehículo</label>
-                <input type="text" name="PlacaVehiculo" id="">
+                <input type="text" name="PlacaVehiculo" id="" require>
+
+                <label>Ingrese el rol del usuario</label>
+                <input type="text" name="RolUsuario" id="" require>
                 
-                <input type="submit" name="operacion" value="Guardar"></input>
+                <input type="submit" name="operacion" value="Guardar">
                 <input type="submit" name="operacion" value="Eliminar"></input>
                 
                 <input type="text" name="controlador" value ="estudiante" id="" hidden>

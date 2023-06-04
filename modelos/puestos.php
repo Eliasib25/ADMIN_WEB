@@ -1,6 +1,6 @@
 <?php
 
-class ControlSalidaVehiculo {
+class Puestos {
 
     public $Id;
     public $EstadoPuesto;

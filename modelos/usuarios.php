@@ -13,9 +13,10 @@ class Estudiante {
     public $TipoSangre;
     public $Foto;
     public $Programa;
+    public $NombreRol;
 
     public function __construct($Identificador = '',$NombreUsuario = '',$Contraseña = '',$NumeroIdentificacion ='',$TipoIdentificacion='',
-    $Nombres = '',$Apellidos = '',$FechaNacimiento = '',$TipoSangre = '',$Foto = '', $Programa= ''){
+    $Nombres = '',$Apellidos = '',$FechaNacimiento = '',$TipoSangre = '',$Foto = '', $Programa= '', $NombreRol = ''){
 
     $this->Identificador = $Identificador;
     $this->NombreUsuario = $NombreUsuario;    
@@ -28,6 +29,7 @@ class Estudiante {
     $this->TipoSangre = $TipoSangre;
     $this->Foto =$Foto;
     $this->Programa = $Programa;
+    $this->NombreRol = $NombreRol;
 
     }
 

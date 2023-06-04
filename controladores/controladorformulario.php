@@ -19,8 +19,9 @@ if($controlador == "estudiante"){
     $TipoSangre = $_POST['TipoSangre'];//aa
     $Foto = $_POST['Foto'];//aa
     $Programa = $_POST['Programa'];
+    $RolUsuario = $_POST['RolUsuario'];
 
-    $estudiante = new Estudiante($Identificador, $NombreUsuario, $Contraseña, $NumeroIdentificacion,$TipoIdentificacion,$Nombres,$Apellidos, $FechaNacimiento, $TipoSangre, $Foto, $Programa);
+    $estudiante = new Estudiante($Identificador, $NombreUsuario, $Contraseña, $NumeroIdentificacion,$TipoIdentificacion,$Nombres,$Apellidos, $FechaNacimiento, $TipoSangre, $Foto, $Programa, $RolUsuario);
 
     $controladorEstudiante = new ControladorEstudiante();
 
@@ -28,10 +29,16 @@ if($controlador == "estudiante"){
 
         $resultado = $controladorEstudiante->guardar($estudiante);   
 
-        if($resultado == false){
-            echo "El estudiante fue guardado";
-        }else{
-            echo "El estudiante no fue guardado";
+        if ($resultado == false) {
+            echo '<script>alert("El estudiante fue guardado");</script>';
+            echo "<script>
+            window.location.href = '../vistas/CRUDusuarios.php';
+            </script>";
+        } else {
+            echo '<script>alert("El estudiante no fue guardado");</script>';
+            echo "<script>
+            window.location.href = '../vistas/CRUDusuarios.php';
+            </script>";
         }
 
     }elseif($operacion == "Eliminar"){
@@ -44,10 +51,16 @@ if($controlador == "estudiante"){
 
         $resultado = $controladorEstudiante->eliminar($estudiante);
 
-        if($resultado == false){
-            echo "El estudiante fue eliminado";
-        }else{
-            echo "El estudiante no fue eliminado";
+        if ($resultado == false) {
+            echo '<script>alert("El estudiante fue eliminado");</script>';
+            echo "<script>
+            window.location.href = '../vistas/CRUDusuarios.php';
+            </script>";
+        } else {
+            echo '<script>alert("El estudiante no fue eliminado");</script>';
+            echo "<script>
+            window.location.href = '../vistas/CRUDusuarios.php';
+            </script>";
         }
     }
     
@@ -60,8 +73,10 @@ if($controlador == "estudiante"){
     $Modelo = $_POST['Modelo'];
     $PlacaVehiculo = $_POST['PlacaVehiculo'];
     $Color = $_POST['Color'];
+    $NumeroIdentificacion = $_POST['NumeroIdentificacion'];
+    $TipoIdentificacion = $_POST['TipoIdentificacion'];
 
-    $vehiculo = new Vehiculo($idVehiculos, $Nombre, $Modelo, $PlacaVehiculo,$Color);
+    $vehiculo = new Vehiculo($idVehiculos, $Nombre, $Modelo, $PlacaVehiculo,$Color, $NumeroIdentificacion, $TipoIdentificacion);
 
     $controladorVehiculo = new ControladorVehiculo();
 
@@ -71,8 +86,14 @@ if($controlador == "estudiante"){
 
         if($resultado == false){
             echo "El vehículo fue guardado";
+            echo "<script>
+            window.location.href = '../vistas/CRUDvehiculos.php';
+            </script>";
         }else{
             echo "El vehículo no fue guardado";
+            echo "<script>
+            window.location.href = '../vistas/CRUDvehiculos.php';
+            </script>";
         }
 
     }elseif($operacion == "Eliminar"){
@@ -86,31 +107,71 @@ if($controlador == "estudiante"){
 
         if($resultado == false){
             echo "El vehículo fue eliminado";
+            echo "<script>
+            window.location.href = '../vistas/CRUDvehiculos.php';
+            </script>";
+            
         }else{
             echo "El vehículo no fue eliminado";
+            echo "<script>
+            window.location.href = '../vistas/CRUDvehiculos.php';
+            </script>";
         }
     }
 
-}elseif($controlador == "controlsalida"){
-    require_once("../modelos/controlsalidavehiculo.php");
-    require_once("controladorcontrolsalidavehiculo.php");
+}elseif($controlador == "puestos"){
+    require_once("../modelos/puestos.php");
+    require_once("controladorpuestos.php");
 
-    $Id = 0;    
+    $Id = 0;
     $EstadoPuesto = $_POST['EstadoPuesto'];
     $Numero = $_POST['Numero'];
     $parqueadero_id = $_POST['parqueaderos_id'];
 
-    $control = new ControlSalidaVehiculo($Id, $EstadoPuesto, $Numero, $parqueadero_id);
+    $puesto = new Puestos($Id, $Numero, $EstadoPuesto, $parqueadero_id);
 
-    $controladorVehiculo = new ControladorControlSalidaVehiculo();
+    $controladorPuestos = new ControladorPuestos();
 
-    $resultado = $controladorVehiculo->guardar($control);   
+    $resultado = $controladorPuestos->guardar($puesto);   
 
     echo "El estado del puesto se ha cambiado";
+    echo "<script>
+            window.location.href = '../vistas/CRUDpuestos.php';
+            </script>";
         
+}elseif($controlador == "parqueadero"){
+    require_once("../modelos/parqueadero.php");
+    require_once("controladorparqueadero.php");
 
-    
+    $Id = 0;
+    $Nombre = $_POST['Nombre'];
+    $Capacidad_Total = $_POST['Capacidad_Total'];
+    $Ubicacion = $_POST['Ubicacion'];
+    $Disponibilidad = $_POST['Disponibilidad'];
+    $parqueadero = new Parqueaderos($Id, $Nombre, $Capacidad_Total, $Ubicacion, $Disponibilidad);
 
+    $controladorParqueadero = new ControladorParqueadero();
+
+    $resultado = $controladorParqueadero->guardar($parqueadero);   
+
+    echo "<script>
+            window.location.href = '../vistas/CRUDparqueadero.php';
+            </script>";
+}elseif($controlador == "roles"){
+    require_once("../modelos/rol.php");
+    require_once("controladorroles.php");
+
+    $Id = 0;
+    $Nombre = $_POST['Nombre'];
+    $rol = new Roles($Id, $Nombre);
+
+    $controladorRol = new ControladorRoles();
+
+    $resultado = $controladorRol->guardar($rol);   
+
+    echo "<script>
+            window.location.href = '../vistas/CRUDroles.php';
+            </script>";
 }
 
 ?>
