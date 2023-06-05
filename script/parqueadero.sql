@@ -79,11 +79,11 @@ DROP TABLE IF EXISTS `reservas`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `reservas` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `HoraInicio` time NOT NULL,
-  `Fecha` date NOT NULL,
+  `HoraInicio` varchar(45) NOT NULL,
+  `Fecha` varchar(45) NOT NULL,
   `EstadoReserva` enum('Activa','Cancelada','Completada') NOT NULL,
   `Placa_Vehiculo` varchar(45) NOT NULL,
-  `HoraFin` time NOT NULL,
+  `HoraFin` varchar(45) NOT NULL,
   `usuarios_Identificador` int(11) NOT NULL,
   `puestos_Id` int(11) NOT NULL,
   PRIMARY KEY (`Id`),
@@ -667,4 +667,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-04  9:19:54
+-- Dump completed on 2023-06-04 22:35:37

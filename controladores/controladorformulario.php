@@ -193,6 +193,23 @@ if($controlador == "estudiante"){
     echo "<script>
             window.location.href = '../vistas/CRUDreservas.php';
             </script>";
+
+}elseif($controlador == "login"){
+    require_once("../modelos/usuarios.php");
+    require_once("controladorestudiante.php");
+
+    $NombreUsuario = $_POST['NombreUsuario'];
+    $Contraseña = $_POST['Contraseña'];
+    $reserva = new Estudiante($NombreUsuario, $Contraseña);
+
+    $controladorReserva = new ControladorEstudiante();
+
+    $resultado = $controladorReserva->guardar($reserva);   
+
+    echo "<script>
+            window.location.href = '../vistas/CRUDreservas.php';
+            </script>";
+            
 }
 
 ?>
