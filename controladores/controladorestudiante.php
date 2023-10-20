@@ -31,16 +31,14 @@ class ControladorEstudiante extends ConectarMySQL implements InterfazControlador
     public function getDatos($sql){
     }
 
-    public function consultarRegistroCliente($id,$pass){
+    public function consultarRegistroCliente($NombreUsuario,$password){
 
-        $sql = "Select tipo from ".$this->tabla." where 
-        Identificador = ? and Contraseña = ?";
+        $sql = "call Login(?,?)";
         $sentencia = $this->getConexion()->prepare($sql);
-        $sentencia->bind_param("is",$id,$pass);
+        $sentencia->bind_param("ss",$NombreUsuario,$password);
         $sentencia->execute();
         $result = $sentencia -> get_result();
         return $result;
-
     }
 }
 ?>

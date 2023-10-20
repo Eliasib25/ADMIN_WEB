@@ -44,12 +44,23 @@
                 <label>Ingrese el estado que desea asignar al puesto</label>
                 <select name="EstadoPuesto" id="" require>
                     <option value="Disponible">Disponible</option>
-                    <option value="NoDisponible">NoDisponible</option>
-                    
+                    <option value="NoDisponible">No disponible</option>
                 </select>
 
-                <label>Ingrese el id del parqueadero al que pertenece</label>
-                <input type="number" name="parqueaderos_id" id="">
+                <label>Seleccione el parqueadero</label>
+                <?php
+                require_once("../controladores/controladorparqueadero.php");
+                
+                $controladorPuestos = new ControladorParqueadero();
+
+                $listado = $controladorPuestos->listar();
+
+                echo '<select name ="parqueaderos_id">';
+                while ($fila = $listado->fetch_assoc()){
+                    echo '<option value="'.$fila['Id'].'">'.$fila['Nombre'].'</option>';
+                }
+                echo '</select>';
+                ?>
                 
                 <input type="submit" name="operacion" value="Guardar" style="margin-top:5px;"></input>
                 

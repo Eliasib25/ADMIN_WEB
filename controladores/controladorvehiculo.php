@@ -7,7 +7,7 @@ class ControladorVehiculo extends ConectarMySQL implements InterfazControlador {
     private $tabla = "vehiculos";
 
     public function guardar($objeto){
-        $sql = "call GestionarVehiculoAsociadoUsuario(0,?,?,?,?,?,?,?)";
+        $sql = "call GestionarVehiculo(0,?,?,?,?,?,?,?)";    
         $sentencia = $this->getConexion()->prepare($sql);
         $sentencia->bind_param("issssss",$objeto->idVehiculos,$objeto->Nombre,$objeto->Modelo,$objeto->PlacaVehiculo,$objeto->Color,$objeto->NumeroIdentificacion,$objeto->TipoIdentificacion);
         $sentencia->execute();
@@ -15,7 +15,7 @@ class ControladorVehiculo extends ConectarMySQL implements InterfazControlador {
     }
 
     public function eliminar($objeto){
-        $sql = "call GestionarVehiculoAsociadoUsuario(1,?,?,?,?,?,?,?)";
+        $sql = "call AsociarVehiculoUsuario(1,?,?,?,?,?,?,?)";
         $sentencia = $this->getConexion()->prepare($sql);
         $sentencia->bind_param("issssss",$objeto->idVehiculos,$objeto->Nombre,$objeto->Modelo,$objeto->PlacaVehiculo,$objeto->Color,$objeto->NumeroIdentificacion,$objeto->TipoIdentificacion);
         $sentencia->execute();

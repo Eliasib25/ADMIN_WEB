@@ -128,13 +128,13 @@ if($controlador == "estudiante"){
     $Numero = $_POST['Numero'];
     $parqueadero_id = $_POST['parqueaderos_id'];
 
-    $puesto = new Puestos($Id, $Numero, $EstadoPuesto, $parqueadero_id);
+    $puesto = new Puestos($Id,$EstadoPuesto,$Numero, $parqueadero_id);
 
     $controladorPuestos = new ControladorPuestos();
 
-    $resultado = $controladorPuestos->guardar($puesto);   
+    $resultado = $controladorPuestos->actualizarEstadoPuesto($puesto);   
 
-    echo "El estado del puesto se ha cambiado";
+    echo '<script type="text/javascript">alert("El estado del puesto fue cambiado con exito! 😁");</script>';
     echo "<script>
             window.location.href = '../vistas/CRUDpuestos.php';
             </script>";
@@ -145,18 +145,65 @@ if($controlador == "estudiante"){
 
     $Id = 0;
     $Nombre = $_POST['Nombre'];
+    $Nombre = strtoupper($Nombre);
     $Capacidad_Total = $_POST['Capacidad_Total'];
     $Ubicacion = $_POST['Ubicacion'];
     $Disponibilidad = $_POST['Disponibilidad'];
     $parqueadero = new Parqueaderos($Id, $Nombre, $Capacidad_Total, $Ubicacion, $Disponibilidad);
-
+    
     $controladorParqueadero = new ControladorParqueadero();
 
-    $resultado = $controladorParqueadero->guardar($parqueadero);   
+    $resultado = $controladorParqueadero->consultarRegistro($parqueadero);
 
-    echo "<script>
+    $fila = $resultado->fetch_assoc();
+
+    if ($operacion == "Guardar"){
+        require_once("../controladores/controladorpuestos.php");
+        require_once("../modelos/puestos.php");
+        
+        //Consulta para traer el id del parqueadero.
+        function ConsultarIdParqueadero($Nombre){
+
+            $controladorParqueadero = new ControladorParqueadero();
+
+            $resultado = $controladorParqueadero->consultarIdentificadorParqueadero($Nombre);
+
+            $identificadorParqueadero = $resultado->fetch_assoc();
+
+            return $identificadorParqueadero['Id'];
+        }
+        
+        
+        if($fila['count(1)'] == 0){
+
+        $controladorPuestos = new ControladorPuestos();
+
+        $resultado = $controladorParqueadero->guardar($parqueadero);
+
+        $identificadorParqueadero = ConsultarIdParqueadero($Nombre);
+
+        for ($NumeroPuesto=1; $NumeroPuesto <=$Capacidad_Total; $NumeroPuesto++) { 
+            $puesto = new Puestos($Id=0,$Disponibilidad,$NumeroPuesto,$identificadorParqueadero);
+            $controladorPuestos->guardar($puesto);
+        }
+        echo '<script type="text/javascript">alert("Se guardó el parqeadero y los puestos con exito! 😁");</script>';
+        echo "<script>
             window.location.href = '../vistas/CRUDparqueadero.php';
             </script>";
+    }
+    elseif($fila['count(1)'] == 1){
+        $identificadorParqueadero = ConsultarIdParqueadero($Nombre);
+
+        $parqueadero = new Parqueaderos($identificadorParqueadero, $Nombre, $Capacidad_Total, $Ubicacion, $Disponibilidad);
+
+        $resultado = $controladorParqueadero->guardar($parqueadero); 
+        echo '<script type="text/javascript">alert("Se actualizó el estado del parqueadero! 😊");</script>'; 
+        echo "<script>
+            window.location.href = '../vistas/CRUDparqueadero.php';
+            </script>";
+    }
+  }
+
 }elseif($controlador == "roles"){
     require_once("../modelos/rol.php");
     require_once("controladorroles.php");
@@ -170,8 +217,8 @@ if($controlador == "estudiante"){
     $resultado = $controladorRol->guardar($rol);   
 
     echo "<script>
-            window.location.href = '../vistas/CRUDroles.php';
-            </script>";
+            // window.location.href = '../vistas/CRUDroles.php';
+          </script>";
 }elseif($controlador == "reservas"){
     require_once("../modelos/reservas.php");
     require_once("controladorreservas.php");
@@ -200,15 +247,26 @@ if($controlador == "estudiante"){
 
     $NombreUsuario = $_POST['NombreUsuario'];
     $Contraseña = $_POST['Contraseña'];
-    $reserva = new Estudiante($NombreUsuario, $Contraseña);
 
-    $controladorReserva = new ControladorEstudiante();
+    $controladorLogin = new controladorestudiante();
 
-    $resultado = $controladorReserva->guardar($reserva);   
+    $resultado = $controladorLogin->consultarRegistroCliente($NombreUsuario,$Contraseña);   
 
-    echo "<script>
+    $fila = $resultado->fetch_assoc();
+
+    $nombreRol = $fila['Nombre'];
+
+    if($nombreRol == null){
+        echo "Usted no tiene rol no puede acceder";
+    }elseif ($nombreRol == "Administrador"){
+        echo "<script>
             window.location.href = '../vistas/CRUDreservas.php';
             </script>";
+    }else{
+        echo "Con su rol no tiene privilegios para acceder";
+    }
+
+    
             
 }
 
